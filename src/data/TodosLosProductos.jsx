@@ -1,14 +1,18 @@
 // src/data/TodosLosProductos.jsx
 
-export async function getTodosLosProductos() {
+// Accede a la variable de entorno PUBLIC_BACKEND_URL
+// Si la variable no está definida (ej. en tu máquina si no usas .env), usa un valor por defecto para desarrollo local
+const BACKEND_BASE_URL = import.meta.env.PUBLIC_BACKEND_URL || 'http://localhost:8080';
 
-    const PATH = "/api/productos/con-imagenes";
+export async function getTodosLosProductos() {
+    const PATH = "/api/productos/con-imagenes"; // Esta es la ruta específica de tu API
+    const fullUrl = `${BACKEND_BASE_URL}${PATH}`; // Combina la base con la ruta
 
     try {
-        const url = new URL(PATH);
-        console.log("🌍 GET URL:", url.toString());
+        // Ya no necesitas 'new URL()', 'fetch' aceptará la string completa
+        console.log("🌍 GET URL:", fullUrl);
 
-        const response = await fetch(url.toString());
+        const response = await fetch(fullUrl);
 
         if (!response.ok) {
             throw new Error(`Error ${response.status} - ${response.statusText}`);
@@ -26,6 +30,7 @@ export async function getTodosLosProductos() {
 
     } catch (error) {
         console.error("❌ Error en getTodosLosProductos:", error);
+        // Vuelve a lanzar el error para que Astro lo capture durante el prerenderizado
         throw error;
     }
 }
