@@ -14,7 +14,7 @@ const AdminProductoMedia = () => {
 
         try {
             const response = await fetch(
-                `https://ecd3e2f1ea1e.ngrok-free.app/api/productos/${productoNombre}/media`,
+                `/api/productos/${productoNombre}/media`,
                 {
                     method: "PUT",
                     body: formData,
@@ -32,7 +32,7 @@ const AdminProductoMedia = () => {
     const handleDeleteAll = async () => {
         try {
             const response = await fetch(
-                `https://ecd3e2f1ea1e.ngrok-free.app/api/productos/${productoNombre}/media`,
+                `/api/productos/${productoNombre}/media`,
                 {
                     method: "DELETE",
                 }

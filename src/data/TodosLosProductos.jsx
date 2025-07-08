@@ -1,11 +1,11 @@
 // src/data/TodosLosProductos.jsx
 
 export async function getTodosLosProductos() {
-    const BASE_URL = "https://ecd3e2f1ea1e.ngrok-free.app";
+
     const PATH = "/api/productos/con-imagenes";
 
     try {
-        const url = new URL(PATH, BASE_URL);
+        const url = new URL(PATH);
         console.log("🌍 GET URL:", url.toString());
 
         const response = await fetch(url.toString());

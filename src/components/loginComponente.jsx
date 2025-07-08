@@ -9,7 +9,7 @@ export default function Login() {
         e.preventDefault();
         setError(null);
         try {
-            const res = await fetch("https://ecd3e2f1ea1e.ngrok-free.app/api/login", {
+            const res = await fetch("/api/login", {
                 method: "POST",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
