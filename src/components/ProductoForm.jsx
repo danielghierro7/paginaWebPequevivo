@@ -44,9 +44,17 @@ const ProductoForm = () => {
 
         try {
             // Cambia la URL a la que corresponda tu backend
-            const res = await axios.get(`/api/productos/buscar?nombre=${encodeURIComponent(busqueda.trim())}`);
+            const BASE_BACKEND_URL = "https://24aae5a65087.ngrok-free.app";
+
+            const res = await axios.get(`${BASE_BACKEND_URL}/api/productos/buscar`, {
+                params: { nombre: busqueda.trim() }
+            });
+
             setProducto({
-                id: res.data.id || '',
+                // lo que necesites...
+
+
+            id: res.data.id || '',
                 nombre: res.data.nombre || '',
                 descripcion: res.data.descripcion || '',
                 precio: res.data.precio !== undefined ? res.data.precio.toString() : '',
