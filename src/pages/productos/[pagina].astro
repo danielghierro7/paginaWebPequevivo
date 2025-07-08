@@ -3,7 +3,7 @@ import "../../styles/global.css";
 import Footer from "../../components/Footer.astro";
 import ProductoMediaCarousel from "../../components/ProductoCaroulse.jsx";
 import { getTodosLosProductos } from "../../data/TodosLosProductos.jsx";
-export const prerender = false;
+export const prerender = true;
 // 🔑 Necesario para rutas dinámicas: getStaticPaths dentro del frontmatter
 export async function getStaticPaths() {
     const productos = await getTodosLosProductos();
