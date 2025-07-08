@@ -10,8 +10,8 @@ const DeployFrontendButton = () => {
         setMessage('Iniciando el reinicio de tu página web... Por favor, espera unos minutos.');
 
         try {
-            const backendUrl = import.meta.env.PUBLIC_BACKEND_URL || 'http://localhost:8080';
-            const response = await fetch(`${backendUrl}/api/productos/trigger-frontend-build`, {
+
+            const response = await fetch(`/api/productos/trigger-frontend-build`, {
                 method: 'POST',
             });
 
