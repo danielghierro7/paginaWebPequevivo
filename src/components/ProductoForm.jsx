@@ -44,7 +44,7 @@ const ProductoForm = () => {
 
         try {
             // Cambia la URL a la que corresponda tu backend
-            const res = await axios.get(`https://24aae5a65087.ngrok-free.app/api/productos/buscar?nombre=${encodeURIComponent(busqueda.trim())}`);
+            const res = await axios.get(`https://ecd3e2f1ea1e.ngrok-free.app/api/productos/buscar?nombre=${encodeURIComponent(busqueda.trim())}`);
             setProducto({
                 id: res.data.id || '',
                 nombre: res.data.nombre || '',
@@ -98,11 +98,11 @@ const ProductoForm = () => {
         try {
             if (producto.id) {
                 // Edición (PUT)
-                await axios.put(`https://24aae5a65087.ngrok-free.app/api/productos/${producto.id}`, formData);
+                await axios.put(`https://ecd3e2f1ea1e.ngrok-free.app/api/productos/${producto.id}`, formData);
                 setSuccess('✅ Producto editado con éxito');
             } else {
                 // Creación (POST)
-                await axios.post('https://24aae5a65087.ngrok-free.app/api/productos', formData);
+                await axios.post('https://ecd3e2f1ea1e.ngrok-free.app/api/productos', formData);
                 setSuccess('✅ Producto creado con éxito');
             }
 

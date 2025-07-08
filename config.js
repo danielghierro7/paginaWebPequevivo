@@ -1,2 +1,2 @@
 // src/config.js
-export const BASE_BACKEND_URL = "https://24aae5a65087.ngrok-free.app";
+export const BASE_BACKEND_URL = "https://ecd3e2f1ea1e.ngrok-free.app";

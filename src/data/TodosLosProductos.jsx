@@ -1,7 +1,7 @@
 // src/data/TodosLosProductos.jsx
 
 export async function getTodosLosProductos() {
-    const BASE_URL = "https://24aae5a65087.ngrok-free.app";
+    const BASE_URL = "https://ecd3e2f1ea1e.ngrok-free.app";
     const PATH = "/api/productos/con-imagenes";
 
     try {

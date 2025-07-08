@@ -7,7 +7,7 @@ export default function AuthGuard({ children }) {
     useEffect(() => {
         async function checkAuth() {
             try {
-                const res = await fetch("https://24aae5a65087.ngrok-free.app/api/check-auth", {
+                const res = await fetch("https://ecd3e2f1ea1e.ngrok-free.app/api/check-auth", {
                     method: "GET",
                     credentials: "include",
                 });

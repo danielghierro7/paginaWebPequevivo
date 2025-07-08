@@ -11,7 +11,7 @@ export default function DeleteProductoForm() {
 
         try {
             const response = await fetch(
-                `https://24aae5a65087.ngrok-free.app/api/productos/${encodeURIComponent(nombre)}/${encodeURIComponent(categoria)}`,
+                `https://ecd3e2f1ea1e.ngrok-free.app/api/productos/${encodeURIComponent(nombre)}/${encodeURIComponent(categoria)}`,
                 {
                     method: "DELETE",
                 }
