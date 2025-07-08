@@ -2,17 +2,25 @@
 import "../styles/global.css"
 ---
 <div class="flex justify-center items-center min-h-[20vh]">
-    <div class="inline-flex rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
-        <!-- BOTÓN ACTIVO -->
+    <div
+            role="tablist"
+            aria-label="Opciones de productos"
+            class="inline-flex rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800"
+    >
         <a
                 href="/"
+                role="tab"
+                aria-selected="true"
+                tabindex="0"
                 class="px-8 py-4 text-lg font-bold text-white bg-blue-600 border-r border-blue-700 hover:bg-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600 transition-all duration-200"
         >
             Venta
         </a>
-        <!-- BOTÓN INACTIVO -->
         <a
                 href="/productosAlquiler"
+                role="tab"
+                aria-selected="false"
+                tabindex="-1"
                 class="px-8 py-4 text-lg font-bold text-gray-900 bg-white hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 dark:text-white dark:bg-gray-800 dark:hover:text-white dark:hover:bg-gray-700 transition-all duration-200"
         >
             Alquiler
