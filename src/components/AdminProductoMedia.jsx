@@ -12,13 +12,16 @@ const AdminProductoMedia = () => {
         videos.forEach((video) => formData.append("videos", video));
 
         try {
+            const BASE_BACKEND_URL = "https://24aae5a65087.ngrok-free.app";
+
             const response = await fetch(
-                `/api/productos/${productoNombre}/media`,
+                `${BASE_BACKEND_URL}/api/productos/${encodeURIComponent(productoNombre)}/media`,
                 {
                     method: "PUT",
                     body: formData,
                 }
             );
+
 
             const result = await response.text();
             alert(result);

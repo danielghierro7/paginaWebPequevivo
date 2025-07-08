@@ -96,15 +96,18 @@ const ProductoForm = () => {
         });
 
         try {
+            const BASE_BACKEND_URL = "https://24aae5a65087.ngrok-free.app";
+
             if (producto.id) {
                 // Edición (PUT)
-                await axios.put(`/api/productos/${producto.id}`, formData);
+                await axios.put(`${BASE_BACKEND_URL}/api/productos/${producto.id}`, formData);
                 setSuccess('✅ Producto editado con éxito');
             } else {
                 // Creación (POST)
-                await axios.post('/api/productos', formData);
+                await axios.post(`${BASE_BACKEND_URL}/api/productos`, formData);
                 setSuccess('✅ Producto creado con éxito');
             }
+
 
             // Resetear formulario
             setProducto({

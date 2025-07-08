@@ -9,12 +9,15 @@ export default function Login() {
         e.preventDefault();
         setError(null);
         try {
-            const res = await fetch("/api/login", {
+            const BASE_BACKEND_URL = "https://24aae5a65087.ngrok-free.app";
+
+            const res = await fetch(`${BASE_BACKEND_URL}/api/login`, {
                 method: "POST",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, password }),
             });
+
             if (res.ok) {
                 window.location.href = "/admin"; // Redirige a admin si login correcto
             } else if (res.status === 401) {
