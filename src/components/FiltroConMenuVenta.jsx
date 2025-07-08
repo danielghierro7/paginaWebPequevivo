@@ -12,7 +12,7 @@ const categoriasDeProducto = [
 ];
 
 export default function FiltroConMenuVenta() {
-    const categoria = "Ventas";
+    const categoria = "ventas";
     const [categoriaDeProducto, setCategoriaDeProducto] = useState("Todas");
 
     return (
