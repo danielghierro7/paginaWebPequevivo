@@ -1,7 +1,11 @@
 // src/data/TodosLosProductos.jsx
 
 export async function getTodosLosProductos() {
-    const response = await fetch("/api/productos/con-imagenes");
+
+    const BASE_BACKEND_URL = "https://24aae5a65087.ngrok-free.app";
+
+    const response = await fetch(BASE_BACKEND_URL + "/api/productos/con-imagenes");
+
 
     if (!response.ok) {
         throw new Error("No se pudo obtener los productos");
