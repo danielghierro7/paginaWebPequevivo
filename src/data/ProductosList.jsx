@@ -14,7 +14,10 @@ export function useFetchProductos(categoria, categoriaDeProducto) {
             setError(null);
 
             try {
-                const url = new URL("/api/productos/filtro/con-imagenes");
+                const BASE_BACKEND_URL = "https://24aae5a65087.ngrok-free.app";
+
+                const url = new URL("/api/productos/filtro/con-imagenes", BASE_BACKEND_URL);
+
                 url.searchParams.append("categoria", categoria);
                 if (categoriaDeProducto) {
                     url.searchParams.append("categoriaDeProducto", categoriaDeProducto);
