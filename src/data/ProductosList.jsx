@@ -6,55 +6,45 @@ export function useFetchProductos(categoria, categoriaDeProducto) {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        if (!categoria) {
-            console.log("❌ No hay categoría, no se hace fetch");
-            return;
-        }
+        if (!categoria) return;
 
-        const BASE_BACKEND_URL = "https://24aae5a65087.ngrok-free.app";
-        const PATH = "/api/productos/filtro/con-imagenes";
-
-        const fetchProductos = async () => {
-            console.log("🚀 Fetching productos...", { categoria, categoriaDeProducto });
-
+        async function fetchProductos() {
             setLoading(true);
             setError(null);
 
             try {
-                // 👇 Construir URL ABSOLUTA SIEMPRE
-                const url = new URL(PATH, BASE_BACKEND_URL);
+                const url = new URL("https://24aae5a65087.ngrok-free.app/api/productos/filtro/con-imagenes");
                 url.searchParams.append("categoria", categoria);
                 if (categoriaDeProducto) {
                     url.searchParams.append("categoriaDeProducto", categoriaDeProducto);
                 }
 
-                console.log("🌍 URL final:", url.toString());
-
                 const res = await fetch(url.toString());
 
+                // Mostrar código estado y content-type para diagnosticar
+                console.log("Status:", res.status);
+                const contentType = res.headers.get("content-type");
+                console.log("Content-Type:", contentType);
+
                 if (!res.ok) {
-                    throw new Error(`Error ${res.status} - ${res.statusText}`);
+                    throw new Error(`Error HTTP: ${res.status}`);
                 }
 
-                // 👇 Verificar que la respuesta es JSON
-                const contentType = res.headers.get("content-type") || "";
-                if (!contentType.includes("application/json")) {
-                    throw new Error(`Respuesta no es JSON: content-type=${contentType}`);
+                // Comprobar que la respuesta es JSON
+                if (!contentType || !contentType.includes("application/json")) {
+                    const text = await res.text(); // leer la respuesta como texto (HTML u otro)
+                    throw new Error(`Respuesta no JSON:\n${text.substring(0, 300)}`); // muestra los primeros 300 caracteres para diagnóstico
                 }
 
                 const data = await res.json();
-
-                console.log("✅ Datos recibidos:", data);
-
-                // 👇 Siempre devolver array válido
                 setProductos(Array.isArray(data) ? data : data.productos || []);
             } catch (err) {
-                console.error("❌ Error en fetch:", err);
                 setError(err.message);
+                console.error("Fetch error:", err);
             } finally {
                 setLoading(false);
             }
-        };
+        }
 
         fetchProductos();
     }, [categoria, categoriaDeProducto]);
