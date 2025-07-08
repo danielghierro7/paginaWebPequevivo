@@ -1,31 +1,21 @@
 import React from "react";
 import { useFetchProductos } from "../data/ProductosList.jsx";
 import ProductoCard from "./ProductoCard";
-const { productos, loading, error, rawResponse } = useFetchProductos("Ventas", "Todas");
 
-if (loading) return <p>Cargando...</p>;
+export default function FiltroVentas({ categoria, categoriaDeProducto }) {
+    const { productos, loading, error } = useFetchProductos(categoria, categoriaDeProducto);
 
-if (error)
+    console.log("Renderizando FiltroVentas");  // <- Esto para saber que el componente se renderiza
+
+    if (loading) return <p>Cargando productos...</p>;
+    if (error) return <p>Error: {error}</p>;
+    if (productos.length === 0) return <p>No se encontraron productos.</p>;
+
     return (
-        <div>
-            <p>Error: {error}</p>
-            {rawResponse && (
-                <details style={{ whiteSpace: "pre-wrap", maxHeight: "300px", overflow: "auto", border: "1px solid red" }}>
-                    <summary>Mostrar respuesta cruda</summary>
-                    <code>{rawResponse}</code>
-                </details>
-            )}
+        <div className="flex flex-wrap justify-center gap-6">
+            {productos.map(p => (
+                <ProductoCard key={p.id} {...p} />
+            ))}
         </div>
     );
-
-return (
-    <div>
-        {productos.map((p) => (
-            <div key={p.id}>
-                <h3>{p.nombre}</h3>
-                <p>{p.descripcion}</p>
-                {/* y demás */}
-            </div>
-        ))}
-    </div>
-);
+}
