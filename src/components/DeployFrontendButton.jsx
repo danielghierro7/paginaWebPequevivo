@@ -13,7 +13,7 @@ const DeployFrontendButton = () => {
         try {
             // La URL relativa '/api/productos/trigger-frontend-build' será interceptada por Netlify
             // y reenviada a tu backend en Render gracias a tu regla en _redirects.
-            const response = await fetch(`/api/productos/trigger-frontend-build`, {
+            const response = await fetch(`https://backendpequevivo.onrender.com/api/productos/trigger-frontend-build`, {
                 method: 'POST', // Asegúrate de que el método sea POST
             });
 
