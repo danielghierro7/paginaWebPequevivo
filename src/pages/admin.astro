@@ -3,6 +3,7 @@ import AuthGuard from '../components/AuthGuard.jsx';
 import ProductoForm from '../components/ProductoForm.jsx';
 import AdminProductoMedia from '../components/AdminProductoMedia.jsx';
 import DeleteProductoForm from '../components/DeleteProductosForm.jsx';
+import DeployFrontendButton from '../components/DeployFrontendButton'
 import '../styles/global.css';
 ---
 
@@ -19,6 +20,7 @@ import '../styles/global.css';
     <p>PREFERIBLEMENTE SI TIENES QUE MODIFICAR LAS FOTOS O VIDEO DE UN PRODUCTO MODIFICALOS ABAJO DEL TODO</p>
     <DeleteProductoForm client:load />
     <AdminProductoMedia client:load />
+    <DeployFrontendButton client:load/>
 </AuthGuard>
 </body>
 </html>
