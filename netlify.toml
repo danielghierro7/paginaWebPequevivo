@@ -1,0 +1,3 @@
+[build]
+publish = "dist" # Le dice a Netlify que 'dist' es tu carpeta de salida
+command = "npm run build && cp _redirects dist/" # Ejecuta el build y LUEGO copia _redirects a 'dist'
