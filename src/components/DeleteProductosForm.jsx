@@ -10,12 +10,18 @@ export default function DeleteProductoForm() {
         e.preventDefault();
 
         try {
+
+
+            const BASE_BACKEND_URL = "https://24aae5a65087.ngrok-free.app";
+
             const response = await fetch(
-                `/api/productos/${encodeURIComponent(nombre)}/${encodeURIComponent(categoria)}`,
+                `${BASE_BACKEND_URL}/api/productos/${encodeURIComponent(nombre)}/${encodeURIComponent(categoria)}`,
                 {
                     method: "DELETE",
                 }
             );
+
+
 
             if (response.ok) {
                 alert("Producto eliminado correctamente ✅");
