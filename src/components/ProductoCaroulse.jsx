@@ -41,7 +41,9 @@ export default function ProductoMediaCarousel({ imagenes = [], videos = [], nomb
                     />
                 ) : (
                     <video
+                        key={current.url} // Fuerza reinicio cuando cambia la url
                         controls
+                        autoPlay
                         className="w-full h-64 object-contain bg-black cursor-pointer"
                         preload="metadata"
                         playsInline
@@ -97,6 +99,7 @@ export default function ProductoMediaCarousel({ imagenes = [], videos = [], nomb
                         />
                     ) : (
                         <video
+                            key={current.url} // También en el modal para forzar reinicio
                             controls
                             autoPlay
                             className="max-h-full max-w-full object-contain"
