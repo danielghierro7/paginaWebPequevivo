@@ -7,7 +7,7 @@ const categoriasDeProducto = [
     "Toro Mecánico",
     "Castillos Acuáticos",
     "Cañón De Espuma",
-    "Futbolín Humano",
+    "Deportivos",
     "Salón Para Eventos"
 ];
 
