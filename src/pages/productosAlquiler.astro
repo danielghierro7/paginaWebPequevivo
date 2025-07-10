@@ -15,39 +15,42 @@ import Footer from "../components/Footer.astro";
 <body class="min-h-screen flex flex-col bg-gradient-to-br from-teal-500 via-sky-400 to-blue-600 text-gray-900">
 <main class="flex-grow p-8">
 
-    <header class="max-w-6xl mx-auto mb-10 text-center">
+    <header class="max-w-6xl mx-auto mb-6 text-center">
         <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-2xl tracking-wide select-none">
             Pequevivo
         </h1>
 
-        <p class="mt-4 text-3xl sm:text-4xl text-white/90 font-semibold drop-shadow-md">Expertos en animación y alquiler de atracciones</p>
-        <p class="mt-2 text-xl sm:text-2xl text-white/80">De <span class="font-bold">El Viso del Alcor, Sevilla</span></p>
+        <p class="mt-3 text-3xl sm:text-4xl text-white/90 font-semibold drop-shadow-md">Expertos en animación y alquiler de atracciones</p>
+        <p class="mt-1 text-xl sm:text-2xl text-white/80">De <span class="font-bold">El Viso del Alcor, Sevilla</span></p>
     </header>
 
-    <Paginacion class="text-5xl font-extrabold text-white text-center mb-12 drop-shadow-lg"></Paginacion>
+    <Paginacion class="text-5xl font-extrabold text-white text-center mb-8 drop-shadow-lg"></Paginacion>
 
-    <h2 class="text-6xl font-extrabold text-white text-center mb-12 drop-shadow-lg">Nuestros Productos en Alquiler</h2>
+    <h2 class="text-6xl font-extrabold text-white text-center mb-8 drop-shadow-lg">Nuestros Productos en Venta</h2>
 
-    <section class="w-full max-w-7xl mx-auto mb-20 p-10 bg-white bg-opacity-30 rounded-2xl shadow-2xl text-center">
+    <section class="w-full max-w-7xl mx-auto mb-14 p-10 bg-white bg-opacity-30 rounded-2xl shadow-2xl text-center">
         <FiltroConMenuAlquiler client:load />
     </section>
-    <section class="w-full max-w-7xl mx-auto mb-14 p-6 sm:p-10 bg-white bg-opacity-40 rounded-2xl shadow-2xl text-center">
-        <h3 class="text-3xl sm:text-5xl font-bold text-gray-800 mb-6 drop-shadow-md select-none">
+
+    <section class="w-full max-w-7xl mx-auto mb-14 p-12 bg-white bg-opacity-40 rounded-2xl shadow-2xl text-center">
+        <h3 class="text-4xl font-bold text-gray-800 mb-8 drop-shadow-md select-none">
             ¿Quieres saber más? ¡Contáctanos!
         </h3>
         <a
-                href="https://wa.me/34600362444"
+                href="https://wa.me/34654197649"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="inline-flex items-center justify-center px-6 py-3 sm:px-10 sm:py-6 bg-green-500 hover:bg-green-600 text-white text-lg sm:text-2xl font-semibold rounded-lg shadow-lg transition duration-300"
+                class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-6 bg-green-500 hover:bg-green-600 text-white text-2xl sm:text-3xl font-semibold rounded-lg shadow-lg transition duration-300 mx-auto"
         >
             Enviar WhatsApp
-            <img src="/WhatsApp.svg.webp" alt="WhatsApp" class="inline-block w-6 h-6 sm:w-8 sm:h-8 ml-3" />
+            <img src="/WhatsApp.svg.webp" alt="WhatsApp" class="inline-block w-8 h-8 ml-3 sm:w-10 sm:h-10" />
         </a>
+
+
     </section>
 
 
-    <section class="max-w-7xl mx-auto mb-20 p-10 bg-white bg-opacity-90 rounded-2xl shadow-2xl text-center">
+    <section class="max-w-7xl mx-auto mb-14 p-10 bg-white bg-opacity-90 rounded-2xl shadow-2xl text-center">
         <h2 class="text-5xl sm:text-6xl font-extrabold mb-6 text-gray-800 drop-shadow-md">
             Sobre Pequevivo
         </h2>
@@ -61,22 +64,23 @@ import Footer from "../components/Footer.astro";
 
     <Formulario />
 
+    <script src="https://giscus.app/client.js"
+            data-repo="danielghierro7/comentariosDani"
+            data-repo-id="R_kgDOPB9wWA"
+            data-category="General"
+            data-category-id="DIC_kwDOPB9wWM4CsBVH"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="bottom"
+            data-theme="light"
+            data-lang="es"
+            crossorigin="anonymous"
+            async>
+    </script>
 </main>
-<script src="https://giscus.app/client.js"
-        data-repo="danielghierro7/comentariosDani"
-        data-repo-id="R_kgDOPB9wWA"
-        data-category="General"
-        data-category-id="DIC_kwDOPB9wWM4CsBVH"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light"
-        data-lang="es"
-        crossorigin="anonymous"
-        async>
-</script>
+
 <Footer />
 </body>
 </html>
