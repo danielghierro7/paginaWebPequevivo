@@ -1,0 +1,49 @@
+---
+import Formulario from "../components/Formulario.astro";
+import '../styles/global.css';
+import Navbar from "../components/NavBar";
+import Footer from "../components/Footer.astro";
+---
+
+<html lang="es">
+<head>
+    <link rel="icon" type="image/jpeg" href="/https://res.cloudinary.com/dbk0guihi/image/upload/v1752245131/logoBueno_abclhd.png" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pequevivo</title>
+    <meta name="description" content="Pequevivo: expertos en animación infantil y alquiler de atracciones en El Viso del Alcor, Sevilla. Llenamos tus eventos de risas y diversión." />
+
+</head>
+
+<body class="min-h-screen flex flex-col bg-gradient-to-br from-teal-500 via-sky-400 to-blue-600 text-gray-900">
+
+<Navbar client:load />
+
+{/* Contenedor principal con padding para separar navbar fijo */}
+<div class="pt-24 max-w-7xl mx-auto px-4 flex-grow">
+
+    <section class="mb-14 p-12 bg-white bg-opacity-40 rounded-2xl shadow-2xl text-center">
+        <h3 class="text-4xl font-bold text-gray-800 mb-8 drop-shadow-md select-none">
+            ¿Quieres saber más? ¡Contáctanos!
+        </h3>
+
+        <a
+                href="https://wa.me/34654197649"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-6 bg-green-500 hover:bg-green-600 text-white text-2xl sm:text-3xl font-semibold rounded-lg shadow-lg transition duration-300 mx-auto"
+        >
+            Enviar WhatsApp
+            <img src="/WhatsApp.svg.webp" alt="WhatsApp" class="inline-block w-8 h-8 ml-3 sm:w-10 sm:h-10" />
+        </a>
+    </section>
+
+    <Formulario />
+
+</div>
+
+<Footer />
+
+</body>
+</html>
