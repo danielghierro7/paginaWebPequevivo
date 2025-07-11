@@ -1,17 +1,16 @@
 @import "tailwindcss";
-
 .hamburger-bar {
-    height: 1.5px;
-    width: 20px;
+    height: 1px;     /* más delgadas */
+    width: 16px;     /* más cortas */
     background-color: black;
-    box-shadow: 0 0 2px rgba(0,0,0,0.3);
+    box-shadow: 0 0 1px rgba(0,0,0,0.3);
     transition: all 0.3s ease;
 }
 
-/* Media query para pantallas retina / alta resolución */
+/* Retina */
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .hamburger-bar {
-        height: 2px;
-        width: 22px;
+        height: 1.2px;
+        width: 18px;
     }
 }
