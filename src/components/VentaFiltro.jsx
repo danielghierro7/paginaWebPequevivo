@@ -12,10 +12,12 @@ export default function FiltroVentas({ categoria, categoriaDeProducto }) {
     if (productos.length === 0) return <p>No se encontraron productos.</p>;
 
     return (
-        <div className="flex flex-wrap justify-center gap-6">
-            {productos.map(p => (
-                <ProductoCard key={p.id} {...p} />
-            ))}
+        <div className="max-w-7xl mx-auto px-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                {productos.map((p) => (
+                    <ProductoCard key={p.id} {...p} />
+                ))}
+            </div>
         </div>
     );
 }
