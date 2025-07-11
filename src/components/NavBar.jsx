@@ -28,9 +28,11 @@ export default function Navbar() {
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle Menu"
                 >
-                    <span className={`hamburger-bar block ${isOpen ? 'rotate-45 translate-y-1.5' : ''}`}></span>
+                    <span
+                        className={`hamburger-bar block ${isOpen ? 'rotate-45 translate-y-1.5' : '-translate-y-1.5'}`}></span>
                     <span className={`hamburger-bar block ${isOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                    <span className={`hamburger-bar block ${isOpen ? '-rotate-45 -translate-y-1.5' : ''}`}></span>
+                    <span
+                        className={`hamburger-bar block ${isOpen ? '-rotate-45 -translate-y-1.5' : 'translate-y-1.5'}`}></span>
                 </button>
 
             </div>
