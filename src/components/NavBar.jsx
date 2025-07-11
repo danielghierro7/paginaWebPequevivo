@@ -7,13 +7,15 @@ export default function Navbar() {
         <>
             <style>
                 {`
-          /* Opcional: para iPhone y pantallas retina aseguramos contraste */
           @media screen and (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
             .hamburger-button {
               background-color: rgba(0, 0, 0, 0.4) !important;
             }
             .hamburger-button span {
               background-color: white !important;
+              height: 4px !important;
+              box-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+              border-radius: 1px;
             }
           }
         `}
@@ -40,13 +42,16 @@ export default function Navbar() {
                         aria-label="Toggle Menu"
                     >
             <span
-                className={`block h-0.5 bg-white transition-all duration-300 ease-in-out ${isOpen ? 'rotate-45 translate-y-2' : ''}`}
+                className={`block h-1 bg-white transition-all duration-300 ease-in-out ${isOpen ? 'rotate-45 translate-y-2' : ''}`}
+                style={{ borderRadius: '1px' }}
             ></span>
                         <span
-                            className={`block h-0.5 bg-white transition-all duration-300 ease-in-out ${isOpen ? 'opacity-0' : ''}`}
+                            className={`block h-1 bg-white transition-all duration-300 ease-in-out ${isOpen ? 'opacity-0' : ''}`}
+                            style={{ borderRadius: '1px' }}
                         ></span>
                         <span
-                            className={`block h-0.5 bg-white transition-all duration-300 ease-in-out ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}
+                            className={`block h-1 bg-white transition-all duration-300 ease-in-out ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}
+                            style={{ borderRadius: '1px' }}
                         ></span>
                     </button>
                 </div>
