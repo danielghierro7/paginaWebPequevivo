@@ -4,7 +4,7 @@ export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="bg-white shadow-md fixed w-full z-10">
+        <nav className="bg-white shadow-md fixed w-full z-10 top-0 left-0">
             <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
                 <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-2xl tracking-wide select-none">
                     Pequevivo
@@ -24,9 +24,15 @@ export default function Navbar() {
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle Menu"
                 >
-                    <span className={`block h-0.5 bg-gray-700 transition-all ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                    <span className={`block h-0.5 bg-gray-700 transition-all ${isOpen ? 'opacity-0' : ''}`}></span>
-                    <span className={`block h-0.5 bg-gray-700 transition-all ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+          <span
+              className={`block h-0.5 bg-gray-800 transition-all ${isOpen ? 'rotate-45 translate-y-2' : ''}`}
+          ></span>
+                    <span
+                        className={`block h-0.5 bg-gray-800 transition-all ${isOpen ? 'opacity-0' : ''}`}
+                    ></span>
+                    <span
+                        className={`block h-0.5 bg-gray-800 transition-all ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}
+                    ></span>
                 </button>
             </div>
 
