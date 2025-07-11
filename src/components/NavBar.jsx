@@ -6,8 +6,7 @@ export default function Navbar() {
     return (
         <nav className="bg-white shadow-md fixed w-full z-10">
             <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-                <div
-                    className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-2xl tracking-wide select-none">
+                <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-2xl tracking-wide select-none">
                     Pequevivo
                 </div>
 
@@ -25,11 +24,9 @@ export default function Navbar() {
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label="Toggle Menu"
                 >
-          <span
-              className={`block h-0.5 bg-black transition-all ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
-                    <span className={`block h-0.5 bg-black transition-all ${isOpen ? 'opacity-0' : ''}`}></span>
-                    <span
-                        className={`block h-0.5 bg-black transition-all ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+                    <span className={`block h-0.5 bg-gray-700 transition-all ${isOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+                    <span className={`block h-0.5 bg-gray-700 transition-all ${isOpen ? 'opacity-0' : ''}`}></span>
+                    <span className={`block h-0.5 bg-gray-700 transition-all ${isOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
                 </button>
             </div>
 
@@ -42,11 +39,8 @@ export default function Navbar() {
                 }`}
             >
                 <a href="/" className="text-gray-700 hover:text-blue-600 transition-colors">Inicio</a>
-                <a href="/ProductosEnVenta" className="text-gray-700 hover:text-blue-600 transition-colors">Productos en
-                    Venta</a>
-                <a href="/ProductosEnAlquiler" className="text-gray-700 hover:text-blue-600 transition-colors">Productos
-                    en Alquiler</a>
-
+                <a href="/ProductosEnVenta" className="text-gray-700 hover:text-blue-600 transition-colors">Productos en Venta</a>
+                <a href="/ProductosEnAlquiler" className="text-gray-700 hover:text-blue-600 transition-colors">Productos en Alquiler</a>
                 <a href="/contacto" className="text-gray-700 hover:text-blue-600 transition-colors">Contacto</a>
             </div>
         </nav>
