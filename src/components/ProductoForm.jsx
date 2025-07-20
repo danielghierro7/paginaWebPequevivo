@@ -1,6 +1,4 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const categoriasTipoTransaccion = [
@@ -21,7 +19,7 @@ const categoriasDeProducto = [
 const ProductoForm = () => {
     const [busqueda, setBusqueda] = useState('');
     const [producto, setProducto] = useState({
-        id: '', // ahora se llenará automáticamente
+        id: '',
         nombre: '',
         descripcion: '',
         precio: '',
@@ -35,15 +33,17 @@ const ProductoForm = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
 
-    // NUEVO: cargar siguiente número cuando el componente se monte
+    // 🔑 Este useEffect hace la magia al montar
     useEffect(() => {
         const obtenerSiguienteNumero = async () => {
             try {
-                const res = await axios.get('/api/productos/siguiente-numero');
-                const siguienteNumero = res.data; // Ajusta según lo que devuelva tu API
+                const response = await axios.get('/api/productos/siguiente-numero');
+                const siguienteNumero = response.data;
+
                 setProducto(prev => ({
                     ...prev,
-                    id: siguienteNumero
+                    id: siguienteNumero,
+                    nombre: `Producto ${siguienteNumero}`
                 }));
             } catch (err) {
                 console.error('Error obteniendo siguiente número de producto:', err);
@@ -173,7 +173,6 @@ const ProductoForm = () => {
 
                 <label>Número de Producto:</label>
                 <input
-                    id="numeroProducto"
                     type="text"
                     value={producto.id}
                     readOnly
@@ -188,6 +187,9 @@ const ProductoForm = () => {
                     onChange={(e) => setProducto({ ...producto, nombre: e.target.value })}
                     style={{ width: '100%', padding: 8, marginBottom: 10 }}
                 />
+
+                {/* resto igual */}
+                {/* ... tu formulario igual que lo tienes ... */}
 
                 <label>Descripción:</label>
                 <textarea
