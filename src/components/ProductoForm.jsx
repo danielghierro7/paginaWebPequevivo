@@ -37,7 +37,8 @@ const ProductoForm = () => {
     useEffect(() => {
         const obtenerSiguienteNombre = async () => {
             try {
-                const res = await axios.get('/api/productos/ultimoNombre');
+                const res = await axios.get('/api/productos/ultimo-nombre');
+
                 const ultimoNombre = res.data || '000';
 
                 const siguienteNumero = String(parseInt(ultimoNombre, 10) + 1).padStart(3, '0');
