@@ -180,7 +180,7 @@ const ProductoForm = () => {
                 <input
                     type="text"
                     value={producto.nombre}
-                    readOnly
+                    onChange={(e) => setProducto({ ...producto, nombre: e.target.value })}
                     style={{ width: '100%', padding: 8, marginBottom: 10 }}
                 />
 
