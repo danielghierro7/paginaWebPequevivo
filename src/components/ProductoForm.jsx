@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -33,24 +34,27 @@ const ProductoForm = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
 
-    // 🔑 Este useEffect hace la magia al montar
     useEffect(() => {
-        const obtenerSiguienteNumero = async () => {
+        const obtenerSiguienteNombre = async () => {
             try {
-                const response = await axios.get('/api/productos/siguiente-numero');
-                const siguienteNumero = response.data;
+                const res = await axios.get('/api/productos/ultimoNombre');
+                const ultimoNombre = res.data.ultimoNombre || '000';
 
-                setProducto(prev => ({
-                    ...prev,
-                    id: siguienteNumero,
-                    nombre: `Producto ${siguienteNumero}`
-                }));
+                const siguienteNumero = String(parseInt(ultimoNombre, 10) + 1).padStart(3, '0');
+
+                if (!producto.id) {
+                    setProducto((prev) => ({
+                        ...prev,
+                        nombre: siguienteNumero
+                    }));
+                }
             } catch (err) {
                 console.error('Error obteniendo siguiente número de producto:', err);
+                setError('Error obteniendo siguiente número.');
             }
         };
 
-        obtenerSiguienteNumero();
+        obtenerSiguienteNombre();
     }, []);
 
     const buscarProducto = async () => {
@@ -171,25 +175,13 @@ const ProductoForm = () => {
                     {producto.id ? 'Editar Producto' : 'Crear Producto'}
                 </h2>
 
-                <label>Número de Producto:</label>
+                <label>Nombre (Número):</label>
                 <input
                     type="text"
-                    value={producto.id}
+                    value={producto.nombre}
                     readOnly
                     style={{ width: '100%', padding: 8, marginBottom: 10 }}
                 />
-
-                <label>Nombre:</label>
-                <input
-                    type="text"
-                    placeholder="Nombre"
-                    value={producto.nombre}
-                    onChange={(e) => setProducto({ ...producto, nombre: e.target.value })}
-                    style={{ width: '100%', padding: 8, marginBottom: 10 }}
-                />
-
-                {/* resto igual */}
-                {/* ... tu formulario igual que lo tienes ... */}
 
                 <label>Descripción:</label>
                 <textarea
