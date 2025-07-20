@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const categoriasTipoTransaccion = [
     "alquiler",
@@ -19,7 +21,7 @@ const categoriasDeProducto = [
 const ProductoForm = () => {
     const [busqueda, setBusqueda] = useState('');
     const [producto, setProducto] = useState({
-        id: '', // importante para saber si es edición o creación
+        id: '', // ahora se llenará automáticamente
         nombre: '',
         descripcion: '',
         precio: '',
@@ -33,6 +35,24 @@ const ProductoForm = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
 
+    // NUEVO: cargar siguiente número cuando el componente se monte
+    useEffect(() => {
+        const obtenerSiguienteNumero = async () => {
+            try {
+                const res = await axios.get('/api/productos/siguiente-numero');
+                const siguienteNumero = res.data; // Ajusta según lo que devuelva tu API
+                setProducto(prev => ({
+                    ...prev,
+                    id: siguienteNumero
+                }));
+            } catch (err) {
+                console.error('Error obteniendo siguiente número de producto:', err);
+            }
+        };
+
+        obtenerSiguienteNumero();
+    }, []);
+
     const buscarProducto = async () => {
         setError(null);
         setSuccess(null);
@@ -43,7 +63,6 @@ const ProductoForm = () => {
         }
 
         try {
-            // Cambia la URL a la que corresponda tu backend
             const res = await axios.get(`/api/productos/buscar?nombre=${encodeURIComponent(busqueda.trim())}`);
             setProducto({
                 id: res.data.id || '',
@@ -66,16 +85,13 @@ const ProductoForm = () => {
         setError(null);
         setSuccess(null);
 
-        // Validaciones básicas (puedes mejorar aquí)
         if (!producto.nombre.trim()) {
             setError('El nombre es obligatorio.');
             return;
         }
 
-        // Prepara FormData
         const formData = new FormData();
 
-        // Construimos objeto producto para enviar sin id (o con id si existe)
         const productoParaEnviar = {
             nombre: producto.nombre.trim(),
             descripcion: producto.descripcion.trim(),
@@ -97,16 +113,13 @@ const ProductoForm = () => {
 
         try {
             if (producto.id) {
-                // Edición (PUT)
                 await axios.put(`/api/productos/${producto.id}`, formData);
                 setSuccess('✅ Producto editado con éxito');
             } else {
-                // Creación (POST)
                 await axios.post('/api/productos', formData);
                 setSuccess('✅ Producto creado con éxito');
             }
 
-            // Resetear formulario
             setProducto({
                 id: '',
                 nombre: '',
@@ -157,6 +170,15 @@ const ProductoForm = () => {
                 <h2 style={{ textAlign: 'center', marginBottom: '1rem' }}>
                     {producto.id ? 'Editar Producto' : 'Crear Producto'}
                 </h2>
+
+                <label>Número de Producto:</label>
+                <input
+                    id="numeroProducto"
+                    type="text"
+                    value={producto.id}
+                    readOnly
+                    style={{ width: '100%', padding: 8, marginBottom: 10 }}
+                />
 
                 <label>Nombre:</label>
                 <input
