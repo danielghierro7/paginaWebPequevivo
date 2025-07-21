@@ -46,9 +46,14 @@ export default function Categorias() {
                 ¿Con qué trabajamos?
             </h2>
 
-            <div className="flex flex-col items-center gap-8"> {/* Use flexbox to center rows */}
-                {/* Fila de arriba: 3 categorías */}
-                <div className="grid grid-cols-3 gap-8 w-full"> {/* Full width for the 3-column grid */}
+            {/* Contenedor principal flex para centrar y manejar el apilamiento móvil */}
+            {/* En móviles (sin prefijo md:), se apilarán en columna (flex-col) */}
+            {/* A partir de md, se centrarán las filas horizontalmente (md:items-center) */}
+            <div className="flex flex-col items-center gap-8">
+                {/* Fila de arriba: 3 categorías en escritorio, 1 en móvil */}
+                {/* En móvil (sin prefijo md:), grid-cols-1 apila */}
+                {/* A partir de md:, se convierte en grid-cols-3 */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">
                     {categorias.slice(0, 3).map(({ title, image, description }, index) => (
                         <div
                             key={index}
@@ -62,7 +67,7 @@ export default function Categorias() {
                                     flippedIndex === index ? "rotate-y-180" : ""
                                 }`}
                             >
-                                {/* Front side */}
+                                {/* Parte frontal */}
                                 <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden shadow-lg">
                                     <img
                                         src={image}
@@ -76,7 +81,7 @@ export default function Categorias() {
                                     </div>
                                 </div>
 
-                                {/* Back side */}
+                                {/* Parte trasera */}
                                 <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-black bg-opacity-90 rounded-xl p-6 flex flex-col justify-center items-center text-center">
                                     <h3 className="text-xl font-bold text-yellow-400 mb-2">
                                         {title}
@@ -88,11 +93,13 @@ export default function Categorias() {
                     ))}
                 </div>
 
-                {/* Fila de abajo: 2 categorías centradas */}
-                <div className="grid grid-cols-2 gap-8 w-2/3 mx-auto"> {/* Adjust width and use mx-auto for centering */}
+                {/* Fila de abajo: 2 categorías en escritorio, 1 en móvil */}
+                {/* En móvil (sin prefijo md:), grid-cols-1 apila */}
+                {/* A partir de md:, se convierte en grid-cols-2 */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-2/3 md:mx-auto"> {/* Ajusta el 'md:w-2/3' si quieres más o menos ancho en escritorio */}
                     {categorias.slice(3).map(({ title, image, description }, index) => (
                         <div
-                            key={index + 3} // clave única
+                            key={index + 3} // clave única para el mapeo
                             tabIndex="0"
                             role="button"
                             onClick={() => toggleFlip(index + 3)}
@@ -103,7 +110,7 @@ export default function Categorias() {
                                     flippedIndex === index + 3 ? "rotate-y-180" : ""
                                 }`}
                             >
-                                {/* Front side */}
+                                {/* Parte frontal */}
                                 <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden shadow-lg">
                                     <img
                                         src={image}
@@ -117,7 +124,7 @@ export default function Categorias() {
                                     </div>
                                 </div>
 
-                                {/* Back side */}
+                                {/* Parte trasera */}
                                 <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-black bg-opacity-90 rounded-xl p-6 flex flex-col justify-center items-center text-center">
                                     <h3 className="text-xl font-bold text-yellow-400 mb-2">
                                         {title}
@@ -131,19 +138,19 @@ export default function Categorias() {
             </div>
 
             <style jsx>{`
-        .perspective {
-          perspective: 1000px;
-        }
-        .backface-hidden {
-          backface-visibility: hidden;
-        }
-        .transform-style-preserve-3d {
-          transform-style: preserve-3d;
-        }
-        .rotate-y-180 {
-          transform: rotateY(180deg);
-        }
-      `}</style>
+                .perspective {
+                    perspective: 1000px;
+                }
+                .backface-hidden {
+                    backface-visibility: hidden;
+                }
+                .transform-style-preserve-3d {
+                    transform-style: preserve-3d;
+                }
+                .rotate-y-180 {
+                    transform: rotateY(180deg);
+                }
+            `}</style>
         </section>
     );
 }
