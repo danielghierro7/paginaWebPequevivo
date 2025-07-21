@@ -31,8 +31,6 @@ const categorias = [
         description:
             "Atracciones deportivas para eventos activos y llenos de energía.",
     },
-
-
 ];
 
 export default function Categorias() {
@@ -48,14 +46,14 @@ export default function Categorias() {
                 ¿Con qué trabajamos?
             </h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:olympic-grid">
                 {categorias.map(({ title, image, description }, index) => (
                     <div
                         key={index}
                         tabIndex="0"
                         role="button"
                         onClick={() => toggleFlip(index)}
-                        className="relative w-full h-72 perspective cursor-pointer"
+                        className={`relative w-full h-72 perspective cursor-pointer item-${index + 1}`}
                     >
                         <div
                             className={`relative w-full h-full duration-700 transform-style-preserve-3d ${
@@ -88,20 +86,48 @@ export default function Categorias() {
                 ))}
             </div>
 
-            <style jsx>{`
-                .perspective {
-                    perspective: 1000px;
-                }
-                .backface-hidden {
-                    backface-visibility: hidden;
-                }
-                .transform-style-preserve-3d {
-                    transform-style: preserve-3d;
-                }
-                .rotate-y-180 {
-                    transform: rotateY(180deg);
-                }
-            `}</style>
+            <style jsx global>{`
+        @layer components {
+          .perspective {
+            perspective: 1000px;
+          }
+          .backface-hidden {
+            backface-visibility: hidden;
+          }
+          .transform-style-preserve-3d {
+            transform-style: preserve-3d;
+          }
+          .rotate-y-180 {
+            transform: rotateY(180deg);
+          }
+
+          .olympic-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            grid-template-rows: auto auto;
+            grid-template-areas:
+              "a b c"
+              ". d e";
+            justify-items: center;
+          }
+
+          .item-1 {
+            grid-area: a;
+          }
+          .item-2 {
+            grid-area: b;
+          }
+          .item-3 {
+            grid-area: c;
+          }
+          .item-4 {
+            grid-area: d;
+          }
+          .item-5 {
+            grid-area: e;
+          }
+        }
+      `}</style>
         </section>
     );
 }
