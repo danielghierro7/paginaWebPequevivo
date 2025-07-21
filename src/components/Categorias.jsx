@@ -31,12 +31,8 @@ const categorias = [
         description:
             "Atracciones deportivas para eventos activos y llenos de energía.",
     },
-    {
-        title: "Salón Para Eventos",
-        image: "/salon.jpg",
-        description:
-            "Un espacio cómodo y equipado para celebrar cualquier tipo de evento.",
-    },
+
+
 ];
 
 export default function Categorias() {

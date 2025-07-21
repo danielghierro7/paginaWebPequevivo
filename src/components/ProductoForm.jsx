@@ -14,7 +14,7 @@ const categoriasDeProducto = [
     "Castillos Acuáticos",
     "Cañón De Espuma",
     "Deportivos",
-    "Salón Para Eventos"
+
 ];
 
 const ProductoForm = () => {
