@@ -4,32 +4,27 @@ const categorias = [
     {
         title: "Castillos Hinchables",
         image: "/CastilloInicio.jpg",
-        description:
-            "Diversión asegurada para los más pequeños con nuestros castillos hinchables de la mejor calidad.",
+        description: "Diversión asegurada para los más pequeños con nuestros castillos hinchables de la mejor calidad.",
     },
     {
         title: "Toro Mecánico",
         image: "/Toro.jpg",
-        description:
-            "Siente la adrenalina y la diversión con nuestro toro mecánico para eventos.",
+        description: "Siente la adrenalina y la diversión con nuestro toro mecánico para eventos.",
     },
     {
         title: "Castillos Acuáticos",
         image: "/acuatico.jpg",
-        description:
-            "Atracciones acuáticas refrescantes para las mejores fiestas de verano.",
+        description: "Atracciones acuáticas refrescantes para las mejores fiestas de verano.",
     },
     {
         title: "Cañón De Espuma",
         image: "/Cañon.jpg",
-        description:
-            "Diversión con espuma garantizada con nuestro cañón para fiestas inolvidables.",
+        description: "Diversión con espuma garantizada con nuestro cañón para fiestas inolvidables.",
     },
     {
         title: "Deportivos",
         image: "/Diana.jpg",
-        description:
-            "Atracciones deportivas para eventos activos y llenos de energía.",
+        description: "Atracciones deportivas para eventos activos y llenos de energía.",
     },
 ];
 
@@ -46,7 +41,7 @@ export default function Categorias() {
                 ¿Con qué trabajamos?
             </h2>
 
-            <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:olympic-grid">
+            <div className="olympic-grid">
                 {categorias.map(({ title, image, description }, index) => (
                     <div
                         key={index}
@@ -60,7 +55,7 @@ export default function Categorias() {
                                 flippedIndex === index ? "rotate-y-180" : ""
                             }`}
                         >
-                            {/* Front side */}
+                            {/* Front */}
                             <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden shadow-lg">
                                 <img
                                     src={image}
@@ -74,7 +69,7 @@ export default function Categorias() {
                                 </div>
                             </div>
 
-                            {/* Back side */}
+                            {/* Back */}
                             <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-black bg-opacity-90 rounded-xl p-6 flex flex-col justify-center items-center text-center">
                                 <h3 className="text-xl font-bold text-yellow-400 mb-2">
                                     {title}
@@ -86,46 +81,35 @@ export default function Categorias() {
                 ))}
             </div>
 
-            <style jsx global>{`
-        @layer components {
-          .perspective {
-            perspective: 1000px;
-          }
-          .backface-hidden {
-            backface-visibility: hidden;
-          }
-          .transform-style-preserve-3d {
-            transform-style: preserve-3d;
-          }
-          .rotate-y-180 {
-            transform: rotateY(180deg);
-          }
+            <style jsx>{`
+        .olympic-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          grid-template-rows: auto auto;
+          grid-template-areas:
+            "a b c"
+            ". d e";
+          gap: 2rem;
+          justify-items: center;
+        }
 
-          .olympic-grid {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            grid-template-rows: auto auto;
-            grid-template-areas:
-              "a b c"
-              ". d e";
-            justify-items: center;
-          }
+        .item-1 { grid-area: a; }
+        .item-2 { grid-area: b; }
+        .item-3 { grid-area: c; }
+        .item-4 { grid-area: d; }
+        .item-5 { grid-area: e; }
 
-          .item-1 {
-            grid-area: a;
-          }
-          .item-2 {
-            grid-area: b;
-          }
-          .item-3 {
-            grid-area: c;
-          }
-          .item-4 {
-            grid-area: d;
-          }
-          .item-5 {
-            grid-area: e;
-          }
+        .perspective {
+          perspective: 1000px;
+        }
+        .backface-hidden {
+          backface-visibility: hidden;
+        }
+        .transform-style-preserve-3d {
+          transform-style: preserve-3d;
+        }
+        .rotate-y-180 {
+          transform: rotateY(180deg);
         }
       `}</style>
         </section>
