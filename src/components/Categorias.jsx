@@ -46,86 +46,88 @@ export default function Categorias() {
                 ¿Con qué trabajamos?
             </h2>
 
-            <div className="grid grid-cols-3 gap-8">
+            <div className="flex flex-col items-center gap-8"> {/* Use flexbox to center rows */}
                 {/* Fila de arriba: 3 categorías */}
-                {categorias.slice(0, 3).map(({ title, image, description }, index) => (
-                    <div
-                        key={index}
-                        tabIndex="0"
-                        role="button"
-                        onClick={() => toggleFlip(index)}
-                        className="relative w-full h-72 perspective cursor-pointer"
-                    >
+                <div className="grid grid-cols-3 gap-8 w-full"> {/* Full width for the 3-column grid */}
+                    {categorias.slice(0, 3).map(({ title, image, description }, index) => (
                         <div
-                            className={`relative w-full h-full duration-700 transform-style-preserve-3d ${
-                                flippedIndex === index ? "rotate-y-180" : ""
-                            }`}
+                            key={index}
+                            tabIndex="0"
+                            role="button"
+                            onClick={() => toggleFlip(index)}
+                            className="relative w-full h-72 perspective cursor-pointer"
                         >
-                            {/* Front side */}
-                            <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden shadow-lg">
-                                <img
-                                    src={image}
-                                    alt={title}
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4">
-                                    <h3 className="text-lg font-semibold text-yellow-400">
+                            <div
+                                className={`relative w-full h-full duration-700 transform-style-preserve-3d ${
+                                    flippedIndex === index ? "rotate-y-180" : ""
+                                }`}
+                            >
+                                {/* Front side */}
+                                <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden shadow-lg">
+                                    <img
+                                        src={image}
+                                        alt={title}
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4">
+                                        <h3 className="text-lg font-semibold text-yellow-400">
+                                            {title}
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                {/* Back side */}
+                                <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-black bg-opacity-90 rounded-xl p-6 flex flex-col justify-center items-center text-center">
+                                    <h3 className="text-xl font-bold text-yellow-400 mb-2">
                                         {title}
                                     </h3>
+                                    <p className="text-white">{description}</p>
                                 </div>
                             </div>
-
-                            {/* Back side */}
-                            <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-black bg-opacity-90 rounded-xl p-6 flex flex-col justify-center items-center text-center">
-                                <h3 className="text-xl font-bold text-yellow-400 mb-2">
-                                    {title}
-                                </h3>
-                                <p className="text-white">{description}</p>
-                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
 
                 {/* Fila de abajo: 2 categorías centradas */}
-                {categorias.slice(3).map(({ title, image, description }, index) => (
-                    <div
-                        key={index + 3} // clave única
-                        tabIndex="0"
-                        role="button"
-                        onClick={() => toggleFlip(index + 3)}
-                        className={`relative w-full h-72 perspective cursor-pointer ${
-                            index === 0 ? "col-start-2" : "col-start-3"
-                        }`}
-                    >
+                <div className="grid grid-cols-2 gap-8 w-2/3 mx-auto"> {/* Adjust width and use mx-auto for centering */}
+                    {categorias.slice(3).map(({ title, image, description }, index) => (
                         <div
-                            className={`relative w-full h-full duration-700 transform-style-preserve-3d ${
-                                flippedIndex === index + 3 ? "rotate-y-180" : ""
-                            }`}
+                            key={index + 3} // clave única
+                            tabIndex="0"
+                            role="button"
+                            onClick={() => toggleFlip(index + 3)}
+                            className="relative w-full h-72 perspective cursor-pointer"
                         >
-                            {/* Front side */}
-                            <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden shadow-lg">
-                                <img
-                                    src={image}
-                                    alt={title}
-                                    className="w-full h-full object-cover"
-                                />
-                                <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4">
-                                    <h3 className="text-lg font-semibold text-yellow-400">
+                            <div
+                                className={`relative w-full h-full duration-700 transform-style-preserve-3d ${
+                                    flippedIndex === index + 3 ? "rotate-y-180" : ""
+                                }`}
+                            >
+                                {/* Front side */}
+                                <div className="absolute w-full h-full backface-hidden rounded-xl overflow-hidden shadow-lg">
+                                    <img
+                                        src={image}
+                                        alt={title}
+                                        className="w-full h-full object-cover"
+                                    />
+                                    <div className="absolute bottom-0 bg-black bg-opacity-50 w-full p-4">
+                                        <h3 className="text-lg font-semibold text-yellow-400">
+                                            {title}
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                {/* Back side */}
+                                <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-black bg-opacity-90 rounded-xl p-6 flex flex-col justify-center items-center text-center">
+                                    <h3 className="text-xl font-bold text-yellow-400 mb-2">
                                         {title}
                                     </h3>
+                                    <p className="text-white">{description}</p>
                                 </div>
                             </div>
-
-                            {/* Back side */}
-                            <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-black bg-opacity-90 rounded-xl p-6 flex flex-col justify-center items-center text-center">
-                                <h3 className="text-xl font-bold text-yellow-400 mb-2">
-                                    {title}
-                                </h3>
-                                <p className="text-white">{description}</p>
-                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
 
             <style jsx>{`
