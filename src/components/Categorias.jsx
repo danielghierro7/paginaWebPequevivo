@@ -84,11 +84,11 @@ export default function Categorias() {
             <style jsx>{`
         .olympic-grid {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+          grid-template-columns: repeat(4, 1fr);
           grid-template-rows: auto auto;
           grid-template-areas:
-            "a b c"
-            ". d e";
+            "a b c d"
+            ". e f .";
           gap: 2rem;
           justify-items: center;
         }
@@ -96,8 +96,8 @@ export default function Categorias() {
         .item-1 { grid-area: a; }
         .item-2 { grid-area: b; }
         .item-3 { grid-area: c; }
-        .item-4 { grid-area: d; }
-        .item-5 { grid-area: e; }
+        .item-4 { grid-area: e; }
+        .item-5 { grid-area: f; }
 
         .perspective {
           perspective: 1000px;
