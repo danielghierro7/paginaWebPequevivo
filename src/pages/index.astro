@@ -14,29 +14,95 @@ import '../styles/global.css';
 	<meta name="description" content="Pequevivo: expertos en animación infantil y alquiler de atracciones en El Viso del Alcor, Sevilla. Llenamos tus eventos de risas y diversión." />
 	<link rel="icon" type="image/jpeg" href="https://res.cloudinary.com/dbk0guihi/image/upload/v1752245403/logoBueno_xt1kmg.png" />
 
+	<style>
+		@keyframes pulse-once {
+			0% {
+				transform: scale(1);
+			}
+			50% {
+				transform: scale(1.05);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+
+		@keyframes bounce-in {
+			0% {
+				transform: scale(0.1);
+				opacity: 0;
+			}
+			60% {
+				transform: scale(1.1);
+				opacity: 1;
+			}
+			80% {
+				transform: scale(0.9);
+			}
+			100% {
+				transform: scale(1);
+			}
+		}
+
+		@keyframes fade-in-up {
+			0% {
+				opacity: 0;
+				transform: translateY(20px); /* Empieza 20px más abajo */
+			}
+			100% {
+				opacity: 1;
+				transform: translateY(0);
+			}
+		}
+
+		.animate-pulse-once {
+			animation: pulse-once 2s ease-in-out;
+		}
+
+		.animate-bounce-in {
+			animation: bounce-in 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+		}
+
+		.animate-fade-in-up {
+			animation: fade-in-up 0.8s ease-out forwards;
+			opacity: 0; /* Asegura que el elemento esté oculto antes de la animación */
+		}
+
+		/* Retrasos para animaciones secuenciales */
+		.delay-100 { animation-delay: 0.1s; }
+		.delay-200 { animation-delay: 0.2s; }
+		.delay-300 { animation-delay: 0.3s; }
+		.delay-400 { animation-delay: 0.4s; }
+		.delay-500 { animation-delay: 0.5s; }
+		.delay-600 { animation-delay: 0.6s; }
+		.delay-700 { animation-delay: 0.7s; }
+	</style>
 </head>
 
 <body class="min-h-screen flex flex-col bg-gradient-to-br from-teal-500 via-sky-400 to-blue-600 text-gray-900">
 <Navbar client:load />
 
-<main class="flex-grow p-4 sm:p-8 pt-20"> {/* Ajuste aquí: p-4 para móviles, p-8 para sm y superiores */}
+<main class="flex-grow p-4 sm:p-8 pt-33 lg:pt-30"> {/* pt-40 para móviles/tablet, lg:pt-64 para ordenador */}
+
+
+
 	<header class="max-w-6xl mx-auto mb-6 text-center">
 		<h1
-			class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-2xl tracking-wide select-none"
+			class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-2xl tracking-wide select-none animate-bounce-in delay-200"
 		>
 			Pequevivo
 		</h1>
-		<p class="mt-3 text-3xl sm:text-4xl text-white/90 font-semibold drop-shadow-md">
+		<p class="mt-3 text-3xl sm:text-4xl text-white/90 font-semibold drop-shadow-md animate-fade-in-up delay-400">
 			Expertos en animación y alquiler de atracciones
 		</p>
-		<p class="mt-1 text-xl sm:text-2xl text-white/80">
+		<p class="mt-1 text-xl sm:text-2xl text-white/80 animate-fade-in-up delay-600">
 			De <span class="font-bold">El Viso del Alcor, Sevilla</span>
 		</p>
 	</header>
 
 	{/* Aquí insertas el componente React con el efecto flip */}
 	<Categorias client:load />
-	<section class="max-w-7xl mx-auto mb-14 p-4 sm:p-6 md:p-8 lg:p-10 bg-white bg-opacity-90 rounded-2xl shadow-2xl text-center"> {/* Ajuste aquí: p-4 para móviles, incrementando en pantallas mayores */}
+	<section class="max-w-7xl mx-auto mb-14 p-4 sm:p-6 md:p-8 lg:p-10 bg-white bg-opacity-90 rounded-2xl shadow-2xl text-center animate-fade-in-up delay-700"> {/* Added animation and delay */}
 		<h2 class="text-5xl sm:text-6xl font-extrabold mb-6 text-gray-800 drop-shadow-md">
 			Sobre Nosotros
 		</h2>
@@ -50,7 +116,7 @@ import '../styles/global.css';
 	{/* Puedes agregar otras secciones */}
 </main>
 
-<h2 class="text-center text-2xl sm:text-3xl font-bold text-gray-800 my-8">
+<h2 class="text-center text-2xl sm:text-3xl font-bold text-gray-800 my-8 animate-fade-in-up delay-700"> {/* Added animation and delay */}
 	Sección de Comentarios
 </h2>
 

@@ -15,44 +15,97 @@ import Navbar from "../components/NavBar"
     <meta name="description" content="Pequevivo: expertos en animación infantil y alquiler de atracciones en El Viso del Alcor, Sevilla. Llenamos tus eventos de risas y diversión." />
     <link rel="icon" type="image/jpeg" href="https://res.cloudinary.com/dbk0guihi/image/upload/v1752245403/logoBueno_xt1kmg.png" />
 
+    <style>
+        @keyframes pulse-once {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0.1);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            80% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(20px); /* Empieza 20px más abajo */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-pulse-once {
+            animation: pulse-once 2s ease-in-out;
+        }
+
+        .animate-bounce-in {
+            animation: bounce-in 1s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+        }
+
+        .animate-fade-in-up {
+            animation: fade-in-up 0.8s ease-out forwards;
+            opacity: 0; /* Asegura que el elemento esté oculto antes de la animación */
+        }
+
+        /* Retrasos para animaciones secuenciales */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        .delay-700 { animation-delay: 0.7s; }
+    </style>
 </head>
 <body class="min-h-screen flex flex-col bg-gradient-to-br from-teal-500 via-sky-400 to-blue-600 text-gray-900">
 <Navbar client:load />
 
 <main class="flex-grow pt-20">
 
+    <div class="w-full flex justify-center items-center mb-8">
+        <img src="https://res.cloudinary.com/dbk0guihi/image/upload/v1752245403/logoBueno_xt1kmg.png" alt="Logo de Pequevivo" class="w-32 h-32 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full shadow-2xl border-4 border-white transform hover:scale-105 transition duration-300 ease-in-out animate-bounce-in" />
+    </div>
+
     <header class="w-full px-4 sm:px-6 md:px-8 lg:px-0 lg:max-w-6xl lg:mx-auto mb-6 text-center">
-        <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-2xl tracking-wide select-none">
+        <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-2xl tracking-wide select-none animate-bounce-in">
             Pequevivo
         </h1>
 
-        <p class="mt-3 text-3xl sm:text-4xl text-white/90 font-semibold drop-shadow-md">Expertos en animación y alquiler de atracciones</p>
-        <p class="mt-1 text-xl sm:text-2xl text-white/80">De <span class="font-bold">El Viso del Alcor, Sevilla</span></p>
+        <p class="mt-3 text-3xl sm:text-4xl text-white/90 font-semibold drop-shadow-md animate-fade-in-up delay-200">Expertos en animación y alquiler de atracciones</p>
+        <p class="mt-1 text-xl sm:text-2xl text-white/80 animate-fade-in-up delay-400">De <span class="font-bold">El Viso del Alcor, Sevilla</span></p>
     </header>
 
-    <h2 class="text-6xl font-extrabold text-white text-center mb-8 drop-shadow-lg">Nuestros Productos en Venta</h2>
+    <h2 class="text-6xl font-extrabold text-white text-center mb-8 drop-shadow-lg animate-fade-in-up delay-600">Nuestros Productos en Venta</h2>
 
     <section class="w-full mb-14 px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 bg-white bg-opacity-30 rounded-none sm:rounded-2xl shadow-none sm:shadow-2xl text-center lg:max-w-7xl lg:mx-auto">
         <FiltroConMenuVenta client:load />
     </section>
 
     <section class="w-full mb-14 px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-12 lg:py-12 bg-white bg-opacity-40 rounded-none sm:rounded-2xl shadow-none sm:shadow-2xl text-center lg:max-w-7xl lg:mx-auto">
-        <h3 class="text-4xl font-bold text-gray-800 mb-8 drop-shadow-md select-none">
+        <h3 class="text-4xl font-bold text-gray-800 mb-8 drop-shadow-md select-none animate-fade-in-up delay-700">
             ¿Quieres saber más? ¡Contáctanos!
         </h3>
         <a
-                href="https://wa.me/34654197649"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center justify-center w-full sm:w-auto px-8 py-6 bg-green-500 hover:bg-green-600 text-white text-2xl sm:text-3xl font-semibold rounded-lg shadow-lg transition duration-300 mx-auto"
-        >
-            Enviar WhatsApp
-            <img src="/WhatsApp.svg.webp" alt="WhatsApp" class="inline-block w-8 h-8 ml-3 sm:w-10 sm:h-10" />
-        </a>
-    </section>
-
-</main>
-
-<Footer />
-</body>
-</html>
+                href="https://
