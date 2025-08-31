@@ -9,11 +9,34 @@ import '../styles/global.css';
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>Pequevivo - Animación infantil y alquiler de atracciones en Sevilla</title>
-	<meta name="description" content="Pequevivo: expertos en animación infantil y alquiler de atracciones en El Viso del Alcor, Sevilla. Llenamos tus eventos de risas y diversión." />
+	<title>Castillos hinchables en El Viso del Alcor | Pequevivo Animación Infantil</title>
+	<meta name="description" content="Alquiler de castillos hinchables en El Viso del Alcor y Sevilla. Pequevivo anima tus eventos con atracciones seguras, diversión y animación infantil profesional." />
 	<meta name="robots" content="index, follow" />
 	<link rel="canonical" href="https://www.pequevivo.com/" />
 	<link rel="icon" type="image/jpeg" href="https://res.cloudinary.com/dbk0guihi/image/upload/v1752245403/logoBueno_xt1kmg.png" />
+
+	<!-- Datos estructurados para SEO local -->
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "LocalBusiness",
+			"name": "Pequevivo",
+			"description": "Alquiler de castillos hinchables y animación infantil en El Viso del Alcor, Sevilla.",
+			"image": "https://res.cloudinary.com/dbk0guihi/image/upload/v1752245403/logoBueno_xt1kmg.png",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "El Viso del Alcor",
+				"addressRegion": "Sevilla",
+				"addressCountry": "España"
+			},
+			"url": "https://www.pequevivo.com",
+			"sameAs": [
+				"https://www.facebook.com/tu-facebook",
+				"https://www.instagram.com/tu-instagram"
+			]
+		}
+	</script>
+
 	<style>
 		/* Tus animaciones CSS */
 	</style>
@@ -25,7 +48,7 @@ import '../styles/global.css';
 <main class="flex-grow p-4 sm:p-8 pt-30 lg:pt-22">
 	<header class="max-w-6xl mx-auto mb-6 text-center">
 		<h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-2xl tracking-wide select-none animate-bounce-in delay-200">
-			Pequevivo
+			Castillos hinchables en El Viso del Alcor - Pequevivo
 		</h1>
 		<p class="mt-3 text-3xl sm:text-4xl text-white/90 font-semibold drop-shadow-md animate-fade-in-up delay-400">
 			Expertos en animación y alquiler de atracciones
@@ -37,6 +60,7 @@ import '../styles/global.css';
 
 	<Categorias client:load />
 
+	<!-- Sección Sobre Nosotros -->
 	<section class="max-w-7xl mx-auto mb-14 p-4 sm:p-6 md:p-8 lg:p-10 bg-white bg-opacity-90 rounded-2xl shadow-2xl text-center animate-fade-in-up delay-700">
 		<h2 class="text-5xl sm:text-6xl font-extrabold mb-6 text-gray-800 drop-shadow-md">
 			Sobre Nosotros
@@ -46,6 +70,18 @@ import '../styles/global.css';
 			<span class="font-semibold text-yellow-500"> El Viso del Alcor, Sevilla</span>, especializada en animación y alquiler de atracciones para eventos.
 			Llevamos años llenando de risas y diversión fiestas infantiles, comuniones y celebraciones.
 			Nuestro equipo está comprometido con la seguridad, la calidad y la sonrisa de cada familia.
+		</p>
+	</section>
+
+	<!-- Nueva sección optimizada para SEO: Castillos hinchables -->
+	<section class="max-w-7xl mx-auto my-12 p-6 bg-white bg-opacity-95 rounded-2xl shadow-xl text-center">
+		<h2 class="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-800">
+			Castillos hinchables en El Viso del Alcor
+		</h2>
+		<p class="text-xl sm:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+			En <span class="font-bold text-yellow-500">Pequevivo</span> ofrecemos el mejor servicio de
+			<strong>alquiler de castillos hinchables en El Viso del Alcor</strong>, ideales para cumpleaños, comuniones y todo tipo de celebraciones.
+			Garantizamos seguridad, montaje rápido y atracciones divertidas para que los niños disfruten al máximo.
 		</p>
 	</section>
 </main>
