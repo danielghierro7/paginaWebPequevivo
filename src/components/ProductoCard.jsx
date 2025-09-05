@@ -20,11 +20,11 @@ export default function ProductoCard({ id, nombre, precio, descripcion, imagenes
 
             {/* Mostrar VENDIDO o RESERVADO o descripción normal */}
             {estaVendido ? (
-                <h2 className="text-5xl font-extrabold text-red-600 animate-pulse mt-4">
+                <h2 className="text-5xl font-extrabold text-red-600 mt-4">
                     VENDIDO
                 </h2>
             ) : estaReservado ? (
-                <h2 className="text-5xl font-extrabold text-yellow-500 animate-pulse mt-4">
+                <h2 className="text-5xl font-extrabold text-yellow-500 mt-4">
                     RESERVADO
                 </h2>
             ) : (
