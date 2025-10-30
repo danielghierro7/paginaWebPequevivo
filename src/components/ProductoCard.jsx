@@ -15,6 +15,7 @@ export default function ProductoCard({ id, nombre, precio, descripcion, imagenes
             <h3 className="font-extrabold text-3xl mt-6 text-gray-900">{nombre}</h3>
             <p className="text-xl text-gray-600 mt-2">{descripcion}</p>
             <p className="text-2xl font-bold text-green-700 mt-2">€{precio}</p>
+
             <a
                 href={whatsappLink}
                 target="_blank"
