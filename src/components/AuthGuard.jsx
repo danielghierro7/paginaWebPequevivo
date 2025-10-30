@@ -7,7 +7,7 @@ export default function AuthGuard({ children }) {
     useEffect(() => {
         async function checkAuth() {
             try {
-                const res = await fetch("http://localhost:8080/api/check-auth", {
+                const res = await fetch("/api/check-auth", {
                     method: "GET",
                     credentials: "include",
                 });

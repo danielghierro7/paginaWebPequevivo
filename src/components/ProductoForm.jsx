@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const categoriasTipoTransaccion = [
@@ -13,13 +14,13 @@ const categoriasDeProducto = [
     "Castillos Acuáticos",
     "Cañón De Espuma",
     "Deportivos",
-    "Salón Para Eventos"
+
 ];
 
 const ProductoForm = () => {
     const [busqueda, setBusqueda] = useState('');
     const [producto, setProducto] = useState({
-        id: '', // importante para saber si es edición o creación
+        id: '',
         nombre: '',
         descripcion: '',
         precio: '',
@@ -33,6 +34,30 @@ const ProductoForm = () => {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
 
+    useEffect(() => {
+        const obtenerSiguienteNombre = async () => {
+            try {
+                const res = await axios.get('/api/productos/ultimo-nombre');
+
+                const ultimoNombre = res.data || '000';
+
+                const siguienteNumero = String(parseInt(ultimoNombre, 10) + 1).padStart(3, '0');
+
+                if (!producto.id) {
+                    setProducto((prev) => ({
+                        ...prev,
+                        nombre: siguienteNumero
+                    }));
+                }
+            } catch (err) {
+                console.error('Error obteniendo siguiente número de producto:', err);
+                setError('Error obteniendo siguiente número.');
+            }
+        };
+
+        obtenerSiguienteNombre();
+    }, []);
+
     const buscarProducto = async () => {
         setError(null);
         setSuccess(null);
@@ -43,8 +68,7 @@ const ProductoForm = () => {
         }
 
         try {
-            // Cambia la URL a la que corresponda tu backend
-            const res = await axios.get(`http://localhost:8080/api/productos/buscar?nombre=${encodeURIComponent(busqueda.trim())}`);
+            const res = await axios.get(`/api/productos/buscar?nombre=${encodeURIComponent(busqueda.trim())}`);
             setProducto({
                 id: res.data.id || '',
                 nombre: res.data.nombre || '',
@@ -66,16 +90,13 @@ const ProductoForm = () => {
         setError(null);
         setSuccess(null);
 
-        // Validaciones básicas (puedes mejorar aquí)
         if (!producto.nombre.trim()) {
             setError('El nombre es obligatorio.');
             return;
         }
 
-        // Prepara FormData
         const formData = new FormData();
 
-        // Construimos objeto producto para enviar sin id (o con id si existe)
         const productoParaEnviar = {
             nombre: producto.nombre.trim(),
             descripcion: producto.descripcion.trim(),
@@ -97,16 +118,13 @@ const ProductoForm = () => {
 
         try {
             if (producto.id) {
-                // Edición (PUT)
-                await axios.put(`http://localhost:8080/api/productos/${producto.id}`, formData);
+                await axios.put(`/api/productos/${producto.id}`, formData);
                 setSuccess('✅ Producto editado con éxito');
             } else {
-                // Creación (POST)
-                await axios.post('http://localhost:8080/api/productos', formData);
+                await axios.post('/api/productos', formData);
                 setSuccess('✅ Producto creado con éxito');
             }
 
-            // Resetear formulario
             setProducto({
                 id: '',
                 nombre: '',
@@ -158,10 +176,9 @@ const ProductoForm = () => {
                     {producto.id ? 'Editar Producto' : 'Crear Producto'}
                 </h2>
 
-                <label>Nombre:</label>
+                <label>Nombre (Número):</label>
                 <input
                     type="text"
-                    placeholder="Nombre"
                     value={producto.nombre}
                     onChange={(e) => setProducto({ ...producto, nombre: e.target.value })}
                     style={{ width: '100%', padding: 8, marginBottom: 10 }}

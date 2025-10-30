@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BASE_BACKEND_URL } from "../../config.js";
 
 const AdminProductoMedia = () => {
     const [productoNombre, setProductoNombre] = useState("");
@@ -13,7 +14,7 @@ const AdminProductoMedia = () => {
 
         try {
             const response = await fetch(
-                `http://localhost:8080/api/productos/${productoNombre}/media`,
+                `/api/productos/${productoNombre}/media`,
                 {
                     method: "PUT",
                     body: formData,
@@ -31,7 +32,7 @@ const AdminProductoMedia = () => {
     const handleDeleteAll = async () => {
         try {
             const response = await fetch(
-                `http://localhost:8080/api/productos/${productoNombre}/media`,
+                `/api/productos/${productoNombre}/media`,
                 {
                     method: "DELETE",
                 }

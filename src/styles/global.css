@@ -1,1 +1,18 @@
 @import "tailwindcss";
+.hamburger-bar {
+    width: 20px;          /* barras más pequeñas */
+    height: 2px;          /* grosor fino */
+    background-color: black;
+    box-shadow: 0 0 2px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border-radius: 1px;   /* esquinas un poco redondeadas */
+}
+
+
+/* Retina */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .hamburger-bar {
+        height: 1.2px;
+        width: 18px;
+    }
+}
