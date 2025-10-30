@@ -5,7 +5,7 @@ export default function ProductoCard({ id, nombre, precio, descripcion, imagenes
 
     // Enlace de WhatsApp con mensaje que incluye el ID del producto
     const whatsappNumber = "34654197649"; // con el prefijo +34 para España
-    const whatsappMessage = `Hola, estoy interesado en el producto con ID: ${id}`;
+    const whatsappMessage = `Hola, estoy interesado en el producto con ID: ${nombre}`;
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
     return (
