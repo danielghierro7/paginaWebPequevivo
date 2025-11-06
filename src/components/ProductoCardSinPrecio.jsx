@@ -12,9 +12,11 @@ export default function ProductoCard({ id, nombre, precio, descripcion, imagenes
             <p className="text-base font-bold text-green-700 mt-2">¡Consulte el precio contactándonos!</p>
 
             <a
-                href={`/productos/${id}`}
+                href={whatsappLink}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-block mt-6 px-8 py-3 bg-yellow-400 hover:bg-yellow-500 text-black font-semibold rounded-lg shadow-md transition"
-                aria-label={`Ver detalles del producto ${nombre}`}
+                aria-label={`Contactar por WhatsApp sobre el producto ${nombre}`}
             >
                 Ver producto
             </a>
