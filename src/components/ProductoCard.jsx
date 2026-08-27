@@ -36,12 +36,7 @@ export default function ProductoCard(props) {
     const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
     return (
-        <div className="producto-card max-w-md rounded-2xl overflow-hidden shadow-2xl bg-white p-6 text-center border-4 border-red-500">
-            {/* PRUEBA VISUAL */}
-            <div className="bg-red-600 text-white font-bold text-xs uppercase tracking-widest py-1 mb-4 rounded">
-                --- PROBANDO PRODUCTOCARD.JSX ---
-            </div>
-
+        <div className="producto-card max-w-md rounded-2xl overflow-hidden shadow-2xl bg-white p-6 text-center">
             <ProductoMediaCarousel imagenes={imagenes} videos={videos} nombre={nombreLimpio} />
 
             {/* Título/Nombre limpio */}
