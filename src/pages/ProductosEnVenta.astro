@@ -97,15 +97,16 @@ import Navbar from "../components/NavBar"
         <p class="mt-1 text-xl sm:text-2xl text-white/80 animate-fade-in-up delay-400">De <span class="font-bold">El Viso del Alcor, Sevilla</span></p>
     </header>
 
-    <h2 class="text-6xl font-extrabold text-white text-center mb-8 drop-shadow-lg animate-fade-in-up delay-600">Nuestros Productos en Venta</h2>
+   <h2 class="text-6xl font-extrabold text-white text-center mb-8 drop-shadow-lg animate-fade-in-up delay-600">Nuestros Productos en Venta</h2>
 
-    <section class="w-full mb-14 px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 bg-white bg-opacity-30 rounded-none sm:rounded-2xl shadow-none sm:shadow-2xl text-center lg:max-w-7xl lg:mx-auto">
-        <FiltroConMenuVenta client:load />
-    </section>
+       <section class="w-full mb-14 px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12 bg-white bg-opacity-30 rounded-none sm:rounded-2xl shadow-none sm:shadow-2xl text-center lg:max-w-7xl lg:mx-auto">
+           <!-- CAMBIO AQUÍ: client:only="react" fuerza la ejecución del JS en el navegador cliente -->
+           <FiltroConMenuVenta client:only="react" />
+       </section>
 
     <section class="w-full mb-14 px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-12 lg:py-12 bg-white bg-opacity-40 rounded-none sm:rounded-2xl shadow-none sm:shadow-2xl text-center lg:max-w-7xl lg:mx-auto">
         <h3 class="text-4xl font-bold text-gray-800 mb-8 drop-shadow-md select-none animate-fade-in-up delay-700">
-            ¿Quieres saber más? ¡Contáctanos!
+            ¿Quieres saber más? ¡Contáctanos  :)!
         </h3>
         <a
                 href="https://
